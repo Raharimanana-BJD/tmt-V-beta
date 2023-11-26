@@ -1,0 +1,64 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+@layer base {
+  :root {
+    --text: #070901;
+    --background: #ffffff;
+    --primary: #7043df;
+    --secondary: #160411;
+    --accent: #4f21c4;
+  }
+  .dark {
+    --text: #ffffff;
+    --background: #070901;
+    --primary: #7043df;
+    --secondary: #160411;
+    --accent: #4f21c4;
+  }
+}
+
+@layer components {
+  /* svg */
+  .svg {
+    fill: var(--background);
+  }
+
+  /* link */
+  .link {
+    @apply transition-all duration-300 ease-in-out;
+  }
+  /* active link */
+  .link.active {
+    @apply text-primary font-bold;
+  }
+
+  /* hamburger  toggle*/
+  .toggle > span {
+    @apply block w-full h-1 absolute bg-background dark:bg-background rounded transition-all duration-300 ease-in-out;
+  }
+  /* active span toggle */
+  .top.active {
+    @apply transform translate-y-3 rotate-45;
+  }
+  .middle.active {
+    @apply opacity-0;
+  }
+  .bottom.active {
+    @apply transform -translate-y-3 -rotate-45;
+  }
+
+  /* mediascreen */
+  @media (max-width: 50rem) {
+    nav {
+      @apply absolute inset-0 flex-col bg-background dark:bg-background pt-[10rem] transform -translate-y-full transition-all duration-300 ease-in-out;
+    }
+    nav.active {
+      @apply transform translate-y-0;
+    }
+    .toggle {
+      @apply inline-block;
+    }
+  }
+}

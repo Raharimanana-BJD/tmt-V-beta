@@ -1,0 +1,29 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+@layer base {
+  :root {
+    --text: #070901;
+    --background: #ffffff;
+    --primary: #7043df;
+    --secondary: #160411;
+    --accent: #4f21c4;
+  }
+  .dark {
+    --text: #ffffff;
+    --background: #070901;
+    --primary: #7043df;
+    --secondary: #160411;
+    --accent: #4f21c4;
+  }
+}
+
+@layer components {
+  .darksvg {
+    fill: var(--background);
+  }
+  .lightsvg {
+    fill: var(--text);
+  }
+}

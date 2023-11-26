@@ -1,0 +1,118 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+@layer base {
+  :root {
+    --text: #070901;
+    --background: #ffffff;
+    --primary: #7043df;
+    --secondary: #160411;
+    --accent: #4f21c4;
+  }
+  .dark {
+    --text: #ffffff;
+    --background: #070901;
+    --primary: #7043df;
+    --secondary: #160411;
+    --accent: #4f21c4;
+  }
+}
+
+@layer components {
+  .svg {
+    fill: var(--background);
+  }
+}
+
+.primary-header > .container {
+  justify-content: space-between;
+  padding: 1rem 1.5rem;
+  background-color: var(--purple-100);
+  border-radius: 1rem;
+  margin-top: 1.5rem;
+}
+
+.primary-navigation {
+  gap: 1rem;
+  z-index: 999;
+}
+
+.primary-navigation a {
+  transition: all 0.3s ease-in-out;
+  color: var(--gray-200);
+}
+
+.primary-navigation a.active {
+  color: var(--purple-200);
+  font-weight: var(--fw-bold);
+}
+
+.nav-mobile-toggler {
+  width: 30px;
+  height: 25px;
+  display: none;
+  cursor: pointer;
+  position: relative;
+}
+
+.nav-mobile-toggler > span {
+  display: block;
+  width: 100%;
+  height: 4px;
+  position: absolute;
+  background-color: #fff;
+  border-radius: 4px;
+  transition: all 0.3s ease-in-out;
+}
+
+.nav-mobile-toggler > span.top {
+  transform-origin: center;
+}
+
+.nav-mobile-toggler > span.top.active {
+  transform: translateY(10px) rotate(45deg);
+}
+
+.nav-mobile-toggler > span.bottom {
+  bottom: 0;
+  transform-origin: center;
+}
+
+.nav-mobile-toggler > span.bottom.active {
+  transform: translateY(-10px) rotate(-45deg);
+}
+
+.nav-mobile-toggler > span.middle {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.nav-mobile-toggler > span.middle.active {
+  opacity: 0;
+}
+
+#logo,
+.nav-mobile-toggler {
+  z-index: 99999;
+}
+
+@media (max-width: 50em) {
+  .primary-navigation {
+    position: absolute;
+    inset: 0;
+    flex-direction: column;
+    background-color: var(--bgDark);
+    padding-top: 10rem;
+    transform: translateY(-100%);
+    transition: all 0.3s ease-in-out;
+  }
+
+  .primary-navigation.active {
+    transform: translateY(0);
+  }
+
+  .nav-mobile-toggler {
+    display: inline-block;
+  }
+}

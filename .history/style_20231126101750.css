@@ -1,0 +1,91 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+@layer base {
+  :root {
+    --text: #070901;
+    --background: #ffffff;
+    --primary: #7043df;
+    --secondary: #160411;
+    --accent: #4f21c4;
+  }
+  .dark {
+    --text: #ffffff;
+    --background: #070901;
+    --primary: #7043df;
+    --secondary: #160411;
+    --accent: #4f21c4;
+  }
+}
+
+@layer components {
+  .svg {
+    fill: var(--background);
+  }
+
+  /* header */
+  .primary-header > .container {
+    @apply flex justify-between items-center py-4 px-6 bg-purple-100 rounded-md mt-6;
+  }
+
+  .primary-navigation {
+    @apply flex gap-4;
+  }
+
+  .primary-navigation a {
+    @apply transition-all duration-300 text-gray-200;
+  }
+
+  .primary-navigation a.active {
+    @apply text-purple-200 font-bold;
+  }
+
+  .nav-mobile-toggler {
+    @apply w-6 h-5 hidden cursor-pointer relative;
+
+    & > span {
+      @apply block w-full h-1 absolute bg-white rounded transition-all duration-300;
+
+      &.top {
+        @apply transform-origin-center;
+        &.active {
+          @apply transform translate-y-2 rotate-45;
+        }
+      }
+
+      &.bottom {
+        @apply bottom-0 transform-origin-center;
+        &.active {
+          @apply transform translate-y--2 rotate--45;
+        }
+      }
+
+      &.middle {
+        @apply top-1/2 transform -translate-y-1/2;
+        &.active {
+          @apply opacity-0;
+        }
+      }
+    }
+  }
+
+  #logo,
+  .nav-mobile-toggler {
+    @apply z-50;
+  }
+
+  @media (max-width: 50em) {
+    .primary-navigation {
+      @apply absolute inset-0 flex flex-col bg-bgDark pt-16 transform -translate-y-full transition-all duration-300;
+    }
+
+    .primary-navigation.active {
+      @apply transform translate-y-0;
+    }
+
+    .nav-mobile-toggler {
+      @apply inline-block;
+    }
+  }
+}
